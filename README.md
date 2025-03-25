@@ -2,180 +2,100 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Resume Parser using Machine Learning</title>
+    <title>Resume Parser</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #24292e;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }
-        h1, h2, h3 {
-            color: #0366d6;
-            margin-top: 24px;
-            margin-bottom: 16px;
-            font-weight: 600;
+            color: #333;
         }
         h1 {
-            font-size: 2em;
+            color: #0366d6;
             border-bottom: 1px solid #eaecef;
-            padding-bottom: 0.3em;
+            padding-bottom: 10px;
         }
         h2 {
-            font-size: 1.5em;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 0.3em;
+            color: #0366d6;
+            margin-top: 25px;
         }
         code {
-            background-color: rgba(27, 31, 35, 0.05);
+            background: #f6f8fa;
+            padding: 2px 5px;
             border-radius: 3px;
-            padding: 0.2em 0.4em;
-            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-family: monospace;
         }
         pre {
-            background-color: #f6f8fa;
+            background: #f6f8fa;
+            padding: 10px;
             border-radius: 3px;
-            padding: 16px;
             overflow: auto;
         }
         .badge {
             display: inline-block;
-            padding: 2px 5px;
+            padding: 3px 7px;
             border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
             margin-right: 5px;
-            font-size: 0.85em;
-            font-weight: 600;
             color: white;
         }
-        .badge-blue { background-color: #007ec6; }
-        .badge-green { background-color: #28a745; }
-        .badge-orange { background-color: #e36209; }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 16px;
-        }
-        th, td {
-            border: 1px solid #dfe2e5;
-            padding: 6px 13px;
-        }
-        th {
-            background-color: #f6f8fa;
-        }
-        ul {
-            padding-left: 2em;
-        }
+        .python { background: #3776ab; }
+        .license { background: #28a745; }
+        .contributors { background: #e36209; }
     </style>
 </head>
 <body>
     <h1>Resume Parser using Machine Learning</h1>
     
-    <p>
-        <span class="badge badge-blue">Python</span>
-        <span class="badge badge-green">License: MIT</span>
-        <span class="badge badge-orange">Contributors: 2</span>
-    </p>
+    <div>
+        <span class="badge python">Python</span>
+        <span class="badge license">MIT License</span>
+        <span class="badge contributors">2 Contributors</span>
+    </div>
     
-    <p>An automated <strong>Resume Parser</strong> that extracts key skills, clusters resumes by relevance, and assigns scores (0-10) to help recruiters efficiently filter candidates. Built with <strong>Python, NLTK, and Scikit-learn</strong>.</p>
+    <p>Automated resume parser that extracts skills, clusters resumes, and scores them (0-10) for efficient candidate screening.</p>
     
-    <h2>📌 Features</h2>
+    <h2>Features</h2>
     <ul>
-        <li><strong>Text Preprocessing</strong> – Cleans and normalizes resume text</li>
-        <li><strong>Keyword Extraction</strong> – Identifies important skills using TF-IDF</li>
-        <li><strong>Clustering</strong> – Groups similar resumes using K-Means</li>
-        <li><strong>Scoring System</strong> – Ranks resumes from 0 (least relevant) to 10 (most relevant)</li>
-        <li><strong>Easy Integration</strong> – Works with new resumes via a simple function</li>
+        <li>Text cleaning and normalization</li>
+        <li>Keyword extraction using TF-IDF</li>
+        <li>K-Means clustering of similar resumes</li>
+        <li>Scoring system (0-10)</li>
     </ul>
     
-    <h2>🚀 Quick Start</h2>
-    
-    <h3>1. Prerequisites</h3>
-    <ul>
-        <li>Python 3.8+</li>
-        <li>Required Libraries:</li>
-    </ul>
+    <h2>Quick Start</h2>
+    <h3>Installation</h3>
     <pre><code>pip install pandas nltk scikit-learn</code></pre>
     
-    <h3>2. Download NLTK Resources</h3>
-    <p>Run in Python:</p>
-    <pre><code>import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')</code></pre>
-    
-    <h3>3. Run the Resume Parser</h3>
+    <h3>Usage</h3>
     <pre><code>from resume_parser import process_resumes, evaluate_new_resume
 
-# Process a dataset
+# Process resumes
 process_resumes("resumes.csv")
 
-# Evaluate a single resume
-new_resume = "Experienced Python developer with 5+ years in web development."
-cluster, score = evaluate_new_resume(new_resume)
+# Evaluate single resume
+resume_text = "Python developer with 5 years experience"
+cluster, score = evaluate_new_resume(resume_text)
 print(f"Cluster: {cluster}, Score: {score}/10")</code></pre>
     
-    <h2>📂 File Structure</h2>
+    <h2>File Structure</h2>
     <pre>Resume-Parser/
 ├── data/
-│   ├── resumes.csv            # Input dataset
-│   └── parsed_resumes.csv     # Output with scores
-├── resume_parser.py           # Main processing script
-├── README.md
+│   ├── resumes.csv
+│   └── parsed_resumes.csv
+├── resume_parser.py
 └── requirements.txt</pre>
     
-    <h2>📊 Example Output</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Resume Text (Shortened)</th>
-                <th>Cluster</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Data Scientist</td>
-                <td>"Python"</td>
-                <td>2</td>
-                <td>8.7</td>
-            </tr>
-            <tr>
-                <td>Web Developer</td>
-                <td>""</td>
-                <td>1</td>
-                <td>7.2</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <h2>🛠 Customization</h2>
+    <h2>Contributors</h2>
     <ul>
-        <li><strong>Adjust Clusters</strong>: Modify <code>n_clusters</code> in K-Means</li>
-        <li><strong>Improve Text Cleaning</strong>: Edit <code>preprocess_text()</code> for better filtering</li>
-        <li><strong>Enhance Scoring</strong>: Change scaling in <code>MinMaxScaler</code></li>
+        <li>Khandakar Nafees Hossain</li>
+        <li>Souvik Chel</li>
     </ul>
     
-    <h2>🤝 Contributors</h2>
-    <ul>
-        <li><a href="https://github.com/nafeeshossain">Khandakar Nafees Hossain</a></li>
-        <li><a href="https://github.com/souvikchel">Souvik Chel</a></li>
-    </ul>
-    
-    <h2>📜 License</h2>
-    <p>This project is licensed under <strong>MIT</strong>. See <a href="LICENSE">LICENSE</a> for details.</p>
-    
-    <h2>🔗 Useful Links</h2>
-    <ul>
-        <li><a href="https://www.kaggle.com/datasets/snehaanbhawal/resume-dataset">Kaggle Resume Dataset</a></li>
-        <li><a href="https://scikit-learn.org/stable/">Scikit-learn Documentation</a></li>
-    </ul>
-    
-    <p><strong>⭐ Star this repo if you find it useful!</strong><br>
-    <strong>💡 Contributions & suggestions welcome!</strong></p>
-    
-    <h3>Made with Python ❤️</h3>
+    <h2>License</h2>
+    <p>MIT</p>
 </body>
 </html>
