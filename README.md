@@ -13,6 +13,6 @@ A smart resume clustering and scoring system using Natural Language Processing (
 
 1. Clone this repo:
    ```bash
-   git clone https://github.com/yourusername/ResumeParserML.git
-   cd ResumeParserML
+   git clone [https://github.com/nafeeshossain/ResumeParser.git]
+   cd ResumeParser
 
